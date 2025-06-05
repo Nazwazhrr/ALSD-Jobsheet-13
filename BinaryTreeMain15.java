@@ -32,7 +32,23 @@ public class BinaryTreeMain15 {
     
     System.out.println("\nPenghapusan data mahasiswa");
     bst.delete(3.57);
-    System.out.println("\nDaftar semua mahasiswa setelah penghapusan 1 mahasiswa (in order traversal):");
+    System.out.println("\nDaftar semua mahasiswa setelah penghapusan 1 mahasiswa(in order traversal):");
     bst.traverseInOrder(bst.root);
+
+    // Tambahan untuk jawaban 1-3 Tugas Praktikum
+    System.out.println("\n\n== Penambahan Mahasiswa dengan Rekursif ==");
+    bst.addRekursif(new Mahasiswa15("2441061099", "Gita", "A", 3.65));        bst.addRekursif(new Mahasiswa15("2441061100", "Hasan", "B", 3.20));
+
+    System.out.println("\nInOrder Traversal setelah addRekursif:");
+    bst.traverseInOrder(bst.root);
+
+    System.out.println("\n== Mahasiswa dengan IPK Paling Kecil ==");
+    bst.cariMinIPK();
+
+    System.out.println("\n== Mahasiswa dengan IPK Paling Besar ==");
+    bst.cariMaxIPK();
+    
+    System.out.println("\n== Mahasiswa dengan IPK di atas 3.50 ==");
+    bst.tampilMahasiswaIPKdiAtas(3.50);
     }
-}
+} 
