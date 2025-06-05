@@ -164,4 +164,59 @@ public class BinaryTree15 {
             }
         }
     }
+
+    public void addRekursif(Mahasiswa15 data) {
+        root = tambahRekursif(root, data);
+    }
+
+    public Node15 tambahRekursif(Node15 current, Mahasiswa15 data) {
+        if (current == null) {
+            return new Node15(data);
+        }
+
+        if (data.ipk < current.mahasiswa.ipk) {
+            current.left = tambahRekursif(current.left, data);
+        } else {
+            current.right = tambahRekursif(current.right, data);
+        }
+        return current;
+    }
+
+    public void cariMinIPK() {
+    Node15 current = root;
+    if (current == null) {
+        System.out.println("Tree kosong");
+        return;
+    }
+    while (current.left != null) {
+        current = current.left;
+    }
+    current.mahasiswa.tampilInformasi();    
+    }
+
+    public void cariMaxIPK() {
+        Node15 current = root;
+        if (current == null) {
+            System.out.println("Tree kosong");
+            return;
+        }
+        while (current.right != null) {
+            current = current.right;
+        }
+        current.mahasiswa.tampilInformasi();
+    }
+
+    public void tampilMahasiswaIPKdiAtas(double ipkBatas) {
+    tampilDiAtas(root, ipkBatas);
+    }
+
+    private void tampilDiAtas(Node15 node, double ipkBatas) {
+        if (node != null) {
+            tampilDiAtas(node.left, ipkBatas);
+            if (node.mahasiswa.ipk > ipkBatas) {
+                node.mahasiswa.tampilInformasi();
+            }
+            tampilDiAtas(node.right, ipkBatas);
+        }
+    }
 }
